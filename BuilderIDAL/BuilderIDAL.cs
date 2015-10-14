@@ -11,7 +11,7 @@ namespace Maticsoft.BuilderIDAL
     /// <summary>
     /// 接口层代码组件
     /// </summary>
-    public class BuilderIDAL : IBuilder.IBuilderIDAL
+    public class BuilderIDAL : IBuilder.IBuilderIDAL   
     {
         #region 私有变量
 
