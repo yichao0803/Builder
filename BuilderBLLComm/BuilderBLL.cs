@@ -641,7 +641,7 @@ namespace Maticsoft.BuilderBLLComm
             strclass.AppendSpaceLine(2, "public " + strretu + " Add(" + strclass0.ToString() + ")");
             strclass.AppendSpaceLine(2, "{");
             if (DbType == "Oracle") strclass.AppendSpaceLine(3, "string strErr=\"\";");
-            strclass.AppendLine(strclass1.ToString());// 数据验证
+           // 2015-10-21 张义超注释 strclass.AppendLine(strclass1.ToString());// 数据验证
             strclass.AppendSpaceLine(3, ModelSpace + " model=new " + ModelSpace + "();");
             strclass.AppendLine(strclass2.ToString());// 数据赋值
 

@@ -1,4 +1,9 @@
 ﻿
+v0.2 2015-10-21 zhangyichao
+1、删除BLLComm 数据验证
+
+
+
 v0.1 2015-09-15  zhangyichao
 1.增加IDAL/DALParam  Oracle 分页和计数方法 GetRecordCount；GetListByPage
 2.增加IDAL/DALParam  MySQL	分页和计数方法 GetRecordCount；GetListByPage
@@ -6,3 +11,4 @@ v0.1 2015-09-15  zhangyichao
 4.注释BLLComm  Update 按参数修改  2015-09-15 张义超 不可用
 5.修复IDAL/DALParam/BLLComm/Model   Mysql 实体类文件和Model为大写 其中Model层类名 强制大写
 6.增加IDAL/DALParam   转换List方法 DataTableToList；GetModelList
+
