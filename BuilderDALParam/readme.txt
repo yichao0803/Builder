@@ -1,6 +1,9 @@
-﻿
+﻿v0.3 2015-12-29 
+1.BLLComm 增加 DataRowToModel方法
+
 v0.2 2015-10-21 zhangyichao
 1、删除BLLComm 数据验证
+2、更新BuilderDALSQL的代码 匹配 DALParam
 
 
 

@@ -1005,6 +1005,16 @@ namespace Maticsoft.BuilderBLLComm
             strclass.AppendSpaceLine(3, "return dal.GetModelList(strWhere);");
             strclass.AppendSpaceLine(2, "}");
 
+            //返回List<>
+            strclass.AppendLine(); // 张义超 2015-12-29
+            strclass.AppendSpaceLine(2, "/// <summary>");
+            strclass.AppendSpaceLine(2, "/// " + Languagelist["summaryGetModel"].ToString());
+            strclass.AppendSpaceLine(2, "/// </summary>");
+            strclass.AppendSpaceLine(2, "public " + ModelSpace + " DataRowToModel(DataRow row)");
+            strclass.AppendSpaceLine(2, "{");
+            strclass.AppendSpaceLine(3, "return dal.DataRowToModel(row);");
+            strclass.AppendSpaceLine(2, "}");
+
 
             //返回List<>
             strclass.AppendLine();// 张义超 2014-10-22

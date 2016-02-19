@@ -447,6 +447,8 @@ namespace Maticsoft.BuilderDALSQL
             strclass.AppendLine("using System;");
             strclass.AppendLine("using System.Data;");
             strclass.AppendLine("using System.Text;");
+            strclass.AppendLine("using System.Collections.Generic;");
+
             switch (dbobj.DbType)
             {
                 case "SQL2005":
@@ -474,7 +476,9 @@ namespace Maticsoft.BuilderDALSQL
             {
                 strclass.AppendLine("using " + IDALpath + ";");
             }
-            strclass.AppendLine("using Maticsoft.DBUtility;//Please add references");
+            //  strclass.AppendLine("using Maticsoft.DBUtility;//Please add references");
+            // 张义超 2014-10-21 修改为本项目数据库公共类
+            strclass.AppendLine("using " + NameSpace + ".DBUtility;");
             strclass.AppendLine("namespace " + DALpath);
             strclass.AppendLine("{");
             strclass.AppendSpaceLine(1, "/// <summary>");
@@ -528,9 +532,9 @@ namespace Maticsoft.BuilderDALSQL
 
             strclass.AppendSpaceLine(2, "#endregion  Method");
 
-            strclass.AppendSpaceLine(2, "#region  MethodEx");
-            strclass.AppendLine("");
-            strclass.AppendSpaceLine(2, "#endregion  MethodEx");
+            //strclass.AppendSpaceLine(2, "#region  MethodEx");
+            //strclass.AppendLine("");
+            //strclass.AppendSpaceLine(2, "#endregion  MethodEx");
 
 
             strclass.AppendSpaceLine(1, "}");
@@ -992,9 +996,9 @@ namespace Maticsoft.BuilderDALSQL
             strclass.AppendSpaceLine(3, "DataSet ds=" + DbHelperName + ".Query(strSql.ToString());");
             strclass.AppendSpaceLine(3, "if(ds.Tables[0].Rows.Count>0)");
             strclass.AppendSpaceLine(3, "{");
-            
 
-            #region 
+
+            #region
             /*
             foreach (ColumnInfo field in Fieldlist)
             {
@@ -1287,6 +1291,41 @@ namespace Maticsoft.BuilderDALSQL
                 strclass.AppendSpaceLine(3, "return " + DbHelperName + ".Query(strSql.ToString());");
                 strclass.AppendSpaceLine(2, "}");
             }
+
+            //返回List<>
+            strclass.AppendLine(); // 张义超 2015-10-13
+            strclass.AppendSpaceLine(2, "/// <summary>");
+            strclass.AppendSpaceLine(2, "/// " + Languagelist["summaryGetList"].ToString());
+            strclass.AppendSpaceLine(2, "/// </summary>");
+            strclass.AppendSpaceLine(2, "public List<" + ModelSpace + "> GetModelList(string strWhere)");
+            strclass.AppendSpaceLine(2, "{");
+            strclass.AppendSpaceLine(3, "DataSet ds = GetList(strWhere);");
+            strclass.AppendSpaceLine(3, "return DataTableToList(ds.Tables[0]);");
+            strclass.AppendSpaceLine(2, "}");
+
+            //返回List<>
+            strclass.AppendLine();// 张义超 2015-10-13
+            strclass.AppendSpaceLine(2, "/// <summary>");
+            strclass.AppendSpaceLine(2, "/// " + Languagelist["summaryGetList"].ToString());
+            strclass.AppendSpaceLine(2, "/// </summary>");
+            strclass.AppendSpaceLine(2, "public List<" + ModelSpace + "> DataTableToList(DataTable dt)");
+            strclass.AppendSpaceLine(2, "{");
+            strclass.AppendSpaceLine(3, "List<" + ModelSpace + "> modelList = new List<" + ModelSpace + ">();");
+            strclass.AppendSpaceLine(3, "int rowsCount = dt.Rows.Count;");
+            strclass.AppendSpaceLine(3, "if (rowsCount > 0)");
+            strclass.AppendSpaceLine(3, "{");
+            strclass.AppendSpaceLine(4, ModelSpace + " model;");
+            strclass.AppendSpaceLine(4, "for (int n = 0; n < rowsCount; n++)");
+            strclass.AppendSpaceLine(4, "{");
+            strclass.AppendSpaceLine(5, "model = DataRowToModel(dt.Rows[n]);");
+            strclass.AppendSpaceLine(5, "if (model != null)");
+            strclass.AppendSpaceLine(5, "{");
+            strclass.AppendSpaceLine(6, "modelList.Add(model);");
+            strclass.AppendSpaceLine(5, "}");
+            strclass.AppendSpaceLine(4, "}");
+            strclass.AppendSpaceLine(3, "}");
+            strclass.AppendSpaceLine(3, "return modelList;");
+            strclass.AppendSpaceLine(2, "}");
 
             return strclass.Value;
         }
