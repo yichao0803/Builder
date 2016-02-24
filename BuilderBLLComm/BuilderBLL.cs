@@ -370,6 +370,10 @@ namespace Maticsoft.BuilderBLLComm
             }
 
             if (DbType == "Oracle") strclass.AppendSpaceLine(2, " int iErrorCode = 1;");
+
+            strclass.AppendSpaceLine(2, "/// <summary>");
+            strclass.AppendSpaceLine(2, "/// " + Languagelist["summaryConstructor"].ToString());
+            strclass.AppendSpaceLine(2, "/// </summary>");
             strclass.AppendSpaceLine(2, "public " + BLLName + "()");
             strclass.AppendSpaceLine(2, "{}");
             strclass.AppendLine();
@@ -1196,7 +1200,5 @@ namespace Maticsoft.BuilderBLLComm
         }
 
         #endregion
-
-
     }
 }
