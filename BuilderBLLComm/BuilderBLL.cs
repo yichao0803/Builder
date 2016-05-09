@@ -369,7 +369,7 @@ namespace Maticsoft.BuilderBLLComm
                 strclass.AppendSpaceLine(2, "private readonly " + DALSpace + " dal=" + "new " + DALSpace + "();");
             }
 
-            if (DbType == "Oracle") strclass.AppendSpaceLine(2, " int iErrorCode = 1;");
+           // if (DbType == "Oracle") strclass.AppendSpaceLine(2, " int iErrorCode = 1;");
 
             strclass.AppendSpaceLine(2, "/// <summary>");
             strclass.AppendSpaceLine(2, "/// " + Languagelist["summaryConstructor"].ToString());

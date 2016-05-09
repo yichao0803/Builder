@@ -1,11 +1,12 @@
-﻿v0.3 2015-12-29 
+﻿v0.4 2016-05-09
+1.BLLComm 注释  if (DbType == "Oracle") strclass.AppendSpaceLine(2, " int iErrorCode = 1;");
+
+v0.3 2015-12-29 
 1.BLLComm 增加 DataRowToModel方法
 
 v0.2 2015-10-21 zhangyichao
 1、删除BLLComm 数据验证
 2、更新BuilderDALSQL的代码 匹配 DALParam
-
-
 
 v0.1 2015-09-15  zhangyichao
 1.增加IDAL/DALParam  Oracle 分页和计数方法 GetRecordCount；GetListByPage
